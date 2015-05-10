@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150510104800) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "dealers", force: :cascade do |t|
     t.string   "old_id"
     t.string   "name"
@@ -32,20 +35,24 @@ ActiveRecord::Schema.define(version: 20150510104800) do
   create_table "drink_offers", force: :cascade do |t|
     t.integer  "dealer_id"
     t.integer  "drink_id"
+    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "drink_offers", ["dealer_id"], name: "index_drink_offers_on_dealer_id"
-  add_index "drink_offers", ["drink_id"], name: "index_drink_offers_on_drink_id"
+  add_index "drink_offers", ["dealer_id"], name: "index_drink_offers_on_dealer_id", using: :btree
+  add_index "drink_offers", ["drink_id"], name: "index_drink_offers_on_drink_id", using: :btree
 
   create_table "drinks", force: :cascade do |t|
     t.string   "name"
     t.string   "www"
     t.string   "old_id"
+    t.string   "review"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "drink_offers", "dealers"
+  add_foreign_key "drink_offers", "drinks"
 end

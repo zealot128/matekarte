@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 
 gem 'rails', '~> 4.2.1'
@@ -12,7 +13,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'slim-rails'
 gem 'bootstrap-sass'
+gem 'rails-assets-leaflet'
 gem 'oj'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-rails'

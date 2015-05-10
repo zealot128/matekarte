@@ -4,6 +4,7 @@ class CreateDrinks < ActiveRecord::Migration
       t.string :name
       t.string :www
       t.string :old_id
+      t.string :review
       t.text :description
 
       t.timestamps null: false
