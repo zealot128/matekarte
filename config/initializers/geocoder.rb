@@ -1,5 +1,5 @@
 Geocoder.configure(
-  timeout: 2,
+  timeout: 10,
   lookup: :nominatim,
   # cache: Redis.new,
   units: :km,
