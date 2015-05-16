@@ -29,3 +29,12 @@ p
       |Google Maps
 
 
+- if @drink_offers.any?
+  h4 Angebot
+  .row
+    - @drink_offers.each do |d|
+      .col-lg-3.col-md-4.col-sm-6
+        = render d
+- else
+  p.alert.alert-warning
+    | Aktuell kein Mate-Angebot gemeldet.

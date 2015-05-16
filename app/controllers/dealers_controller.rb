@@ -9,6 +9,7 @@ class DealersController < ApplicationController
 
   def show
     @dealer = Dealer.find(params[:id])
+    @drink_offers = @dealer.drink_offers.newest_groups
     render layout: !request.xhr?
   end
 end

@@ -17,6 +17,10 @@ toastr.options = {
 };
 
 jQuery(document).ready( () => {
+  var el = $('.js-map');
+  if (el.length === 0) {
+    return;
+  }
   window.map = new Map($('.js-map')[0]);
   var Router = Backbone.Router.extend({
     routes: {

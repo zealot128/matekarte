@@ -1,0 +1,11 @@
+- klass = ''
+- klass = 'panel-success' if drink_offer.status == 1
+- klass = 'panel-danger' if drink_offer.status == 0
+- klass = 'panel-warning' if drink_offer.status == 2
+- klass = 'panel-warning' if drink_offer.status == 3
+
+.drink-offer.panel.panel-default class=(klass)
+  .panel-heading
+    strong = drink_offer.drink.name
+  .panel-body
+    | Gemeldet am #{l drink_offer.created_at.to_date}
