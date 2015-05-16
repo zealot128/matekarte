@@ -13,6 +13,7 @@ gem 'sprockets-es6'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'simple_form'
 
 gem 'bootstrap-sass'
 gem 'geocoder'
@@ -27,6 +28,7 @@ end
 gem 'slim-rails'
 gem 'font-awesome-rails'
 
+gem 'google_places'
 
 gem 'quiet_assets', group: :development
 group :development, :test do

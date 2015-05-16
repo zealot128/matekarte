@@ -2,5 +2,8 @@
 .drink-offer.panel.panel-default class=(klass)
   .panel-heading
     strong = drink_offer.drink.name
+    .pull-right
+      span.label.label-default
+        = drink_offer.status_name
   .panel-body
     | Gemeldet am #{l drink_offer.created_at.to_date}

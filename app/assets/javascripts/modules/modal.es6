@@ -33,11 +33,15 @@ $(document).on('click', '.js-modal, #js-modal .modal-body a', function(e) {
       modal.trigger('modal:changed', self.attr('href')).trigger('modal:error', self.attr('href'), a, b, c);
     },
     success: function(data) {
-      var footer_provided;
+      var footer_provided, header_provided;
       data = $('<div>' + data + '</div>');
-      footer_provided = data.find('#modal-footer');
+      footer_provided = data.find('.js-modal-footer');
+      header_provided = data.find('.js-modal-title');
       if (footer_provided.length > 0) {
         modal.find('.modal-footer').html(footer_provided.remove().html());
+      }
+      if (footer_provided.length > 0) {
+        modal.find('.modal-title').html(header_provided.remove().html());
       }
       modal.find('.modal-body').html(data.html());
       modal.html(modal.html());

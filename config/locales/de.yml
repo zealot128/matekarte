@@ -1,0 +1,9 @@
+de:
+  drink_offers:
+    statuses:
+      unknown: Unbekannt
+      available: Verfügbar
+      almost_empty: Fast alle
+      empty: Nicht mehr vorhanden
+
+

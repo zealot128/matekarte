@@ -2,17 +2,31 @@ class DrinkOffer < ActiveRecord::Base
   belongs_to :dealer
   belongs_to :drink
 
-  STATUS = ['unbekannt', 'vorhanden', '??', '??']
+  enum status: [:unknown, :available, :almost_empty, :empty]
+
+  validates :status, presence: true
+  validates :drink, presence: true
+  validates :dealer, presence: true
+
   scope :newest_groups, ->{
     select('distinct on (drink_id) drink_offers.*').
     order('drink_id, created_at desc')
   }
   def bootstrap_class
     case status
-    when 0, nil then 'danger'
-    when 1 then 'success'
-    when 2,3 then 'warning'
+    when 'empty','unknown', nil then 'danger'
+    when 'available' then 'success'
+    when 'almost_empty' 'warning'
     end
+  end
+
+  def status_name
+    self.class.status_translate(status)
+  end
+
+  def self.status_translate(status)
+    status ||= 'unknown'
+    I18n.t("drink_offers.statuses.#{status}")
   end
 
   def as_json(opts={})

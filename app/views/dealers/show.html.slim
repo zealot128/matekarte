@@ -1,4 +1,5 @@
-h2 = @dealer.name
+.js-modal-title
+  h2 = @dealer.name
 
 p
   br
@@ -38,3 +39,8 @@ p
 - else
   p.alert.alert-warning
     | Aktuell kein Mate-Angebot gemeldet.
+
+.js-modal-footer
+  = link_to [:new, @dealer, :drink_offers], class: 'btn btn-primary' do
+    | Angebot nicht aktuell? Änderung melden
+

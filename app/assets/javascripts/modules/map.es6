@@ -27,7 +27,7 @@ class Dealer {
       marker = L.AwesomeMarkers.icon({
         icon: 'shopping-cart',
         prefix: 'fa',
-        markerColor: 'darkred'
+        markerColor: 'gray'
       });
     } else  {
       marker = L.AwesomeMarkers.icon({
@@ -41,7 +41,15 @@ class Dealer {
   popup() {
     var d = this.drinks.map( (map) => {
       var [drink,status] = map;
-      return `<span class='label label-default'>${drink.name} ${status}</span>`;
+      var cssClass;
+      if (status === 1) {
+        cssClass = 'success';
+      } else if (status === 0) {
+        cssClass = 'danger';
+      } else {
+        cssClass = 'warning';
+      }
+      return `<span class='label label-${cssClass}'>${drink.name}</span>`;
     });
     return `
       <strong><a href='/dealers/${this.data.id}' class='js-modal'>${this.data.name}</a></strong>

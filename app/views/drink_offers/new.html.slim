@@ -1,0 +1,10 @@
+= simple_form_for [dealer, @drink_offer] do |f|
+  = f.input :drink_id, as: :select, collection: Drink.order('lower(name)'), include_blank: false
+  = f.input :status, collection: DrinkOffer.statuses.except('unknown'), value_method: :first, label_method: ->(s){ DrinkOffer.status_translate(s[0]) }, as: :radio_buttons
+  = f.submit 'Speichern', class: 'btn btn-primary'
+
+css:
+  select {
+    max-width: 200px
+  }
+
