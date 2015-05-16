@@ -1,11 +1,7 @@
-nav.nav.navbar.navbar-default
-  h1.nav-brand
-    | Matekarte
-    sup< 2
-  .pull-right
-    a.btn.btn-default.js-get-geopos href='#'
-      | GEO
-
 
 .js-map style='width: 100%; height: 500px'
 
+- content_for :content_header do
+  ul class="nav navbar-nav navbar-right"
+    li: a.js-get-geopos href='#' title='Geoposition ermitteln'
+      i.fa.fa-map-marker.fa-fw

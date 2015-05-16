@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     resource :drink_offers
   end
   resources :drinks
+  get 'impressum' => 'home#impressum'
   root to: 'home#index'
 end

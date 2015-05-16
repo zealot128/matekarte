@@ -1,10 +1,20 @@
 var GeoPosition = {
   getGeoPosition:  () => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var c = [position.coords.latitude, position.coords.longitude];
-      LS.set('position', c);
-      App.navigate(`map/${c[0]}/${c[1]}`, { trigger: true });
-    });
+    toastr.info('Position wird ermittelt...');
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        toastr.clear();
+
+        var c = [position.coords.latitude, position.coords.longitude];
+        LS.set('position', c);
+        toastr.success('Position ermittelt.');
+        App.navigate(`map/${c[0]}/${c[1]}`, { trigger: true });
+      },
+      (error) => {
+        toastr.clear();
+        toastr.error('Fehler bei Positionsermittlung.');
+      }
+    );
   }
 };
 

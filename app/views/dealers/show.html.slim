@@ -1,0 +1,31 @@
+h2 = @dealer.name
+
+p
+  br
+  = @dealer.address
+  br
+  span>= @dealer.zip
+  span>= @dealer.city
+
+- if @dealer.note.present?
+  blockquote = @dealer.note
+
+
+.row
+  - if @dealer.www.present?
+    .col-sm-4
+      a.btn.btn-block.btn-default href=(safe_url(@dealer.www)) target='_blank' title='Website'
+        i.fa.fa-external-link>
+        = @dealer.www
+
+  - if @dealer.phone.present?
+    .col-sm-4
+      = tel_to @dealer.phone.strip, target: '_blank', title: 'Telefon', class: 'btn btn-default btn-block' do
+        i.fa.fa-phone>
+        = @dealer.phone
+  .col-sm-4
+    a.btn.btn-default.btn-block href='#{@dealer.gmaps_link}' target='_blank' title='Google Maps'
+      i.fa.fa-map-marker>
+      |Google Maps
+
+

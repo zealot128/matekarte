@@ -61,6 +61,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
@@ -87,6 +89,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -103,7 +107,10 @@ GEM
       sprockets-rails
     rails-assets-backbone (1.2.0)
       rails-assets-underscore (>= 1.7.0)
+    rails-assets-jquery (2.1.4)
     rails-assets-leaflet (0.7.3)
+    rails-assets-toastr (2.1.1)
+      rails-assets-jquery (>= 1.6.3)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -180,14 +187,17 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass
+  font-awesome-rails
   geocoder
   jquery-rails
   oj
   pg
   pry-rails
+  quiet_assets
   rails (~> 4.2.1)
-  rails-assets-backbone
-  rails-assets-leaflet
+  rails-assets-backbone!
+  rails-assets-leaflet!
+  rails-assets-toastr!
   rspec-rails
   sass-rails (~> 5.0)
   slim-rails

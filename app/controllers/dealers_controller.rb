@@ -6,4 +6,9 @@ class DealersController < ApplicationController
 
     render json: dealers
   end
+
+  def show
+    @dealer = Dealer.find(params[:id])
+    render layout: !request.xhr?
+  end
 end

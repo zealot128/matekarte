@@ -9,6 +9,10 @@ class Dealer < ActiveRecord::Base
     address + ", #{zip} #{city}"
   end
 
+  def gmaps_link
+    "https://www.google.de/maps/@#{lat},#{lon}"
+  end
+
   def as_json(opts={})
     a = super
     dids =

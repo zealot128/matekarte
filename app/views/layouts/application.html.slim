@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title
+      | Matekarte
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav.nav.navbar.navbar-default
+      .container-fluid
+        a.navbar-brand href='/'
+          | Matekarte
+          sup< 2
+        - if content_for?(:content_header)
+          = yield(:content_header)
+
+    .container-fluid
+      = yield
+
+    footer
+      .container-fluid
+        ul.list-inline.text-center
+          li: a href='/impressum' Impressum
+          li: a href='/dealers/new' Händler eintragen
+          li: a href='https://github.com/zealot128'
+            i.fa.fa-fw.fa-github>
+            |Source-Code

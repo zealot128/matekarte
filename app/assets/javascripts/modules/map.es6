@@ -25,7 +25,7 @@ class Dealer {
       return `<span class='label label-default'>${drink.name}</span>`;
     });
     return `
-      <strong>${this.data.name}</strong>
+      <strong><a href='/dealers/${this.data.id}'>${this.data.name}</a></strong>
       <br/>${this.data.address}
       <br/> ${this.data.city}
       <p>${d.join(' ')}</p>
