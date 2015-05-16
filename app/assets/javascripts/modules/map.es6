@@ -10,22 +10,41 @@ $.get('/drinks.json', (data) => {
 class Dealer {
   constructor(map, hash) {
     this.data = hash;
-    this.drinks = this.data.drink_ids.map( (drink_id) => {
-      return Drinks[drink_id];
+    this.drinks = _.map(this.data.cached_drinks,  (status, drink_id) => {
+      return [ Drinks[parseInt(drink_id)], status ];
     });
     if(this.drinks === undefined) {
       this.drinks = [];
     }
-    this.marker = L.marker([hash.lat, hash.lon]).
+
+    this.marker = L.marker([hash.lat, hash.lon], { icon: this.icon() }).
       addTo(map.map).
       bindPopup(this.popup());
   }
+  icon() {
+    var marker;
+    if (this.drinks.length === 0) {
+      marker = L.AwesomeMarkers.icon({
+        icon: 'shopping-cart',
+        prefix: 'fa',
+        markerColor: 'darkred'
+      });
+    } else  {
+      marker = L.AwesomeMarkers.icon({
+        icon: 'shopping-cart',
+        prefix: 'fa',
+        markerColor: 'blue'
+      });
+    }
+    return marker;
+  }
   popup() {
-    var d = this.drinks.map( (drink) => {
-      return `<span class='label label-default'>${drink.name}</span>`;
+    var d = this.drinks.map( (map) => {
+      var [drink,status] = map;
+      return `<span class='label label-default'>${drink.name} ${status}</span>`;
     });
     return `
-      <strong><a href='/dealers/${this.data.id}'>${this.data.name}</a></strong>
+      <strong><a href='/dealers/${this.data.id}' class='js-modal'>${this.data.name}</a></strong>
       <br/>${this.data.address}
       <br/> ${this.data.city}
       <p>${d.join(' ')}</p>

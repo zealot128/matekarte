@@ -41,7 +41,7 @@ GEM
     autoprefixer-rails (5.1.11)
       execjs
       json
-    babel-source (5.3.3)
+    babel-source (5.4.3)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
@@ -105,8 +105,10 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.1)
       sprockets-rails
+    rails-assets-Leaflet.awesome-markers (2.0.2)
     rails-assets-backbone (1.2.0)
       rails-assets-underscore (>= 1.7.0)
+    rails-assets-bootstrap-modal (2.1.0)
     rails-assets-jquery (2.1.4)
     rails-assets-leaflet (0.7.3)
     rails-assets-toastr (2.1.1)
@@ -195,7 +197,9 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (~> 4.2.1)
+  rails-assets-Leaflet.awesome-markers!
   rails-assets-backbone!
+  rails-assets-bootstrap-modal!
   rails-assets-leaflet!
   rails-assets-toastr!
   rspec-rails

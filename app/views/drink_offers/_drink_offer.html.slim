@@ -1,9 +1,4 @@
-- klass = ''
-- klass = 'panel-success' if drink_offer.status == 1
-- klass = 'panel-danger' if drink_offer.status == 0
-- klass = 'panel-warning' if drink_offer.status == 2
-- klass = 'panel-warning' if drink_offer.status == 3
-
+- klass = "panel-#{drink_offer.bootstrap_class}"
 .drink-offer.panel.panel-default class=(klass)
   .panel-heading
     strong = drink_offer.drink.name

@@ -21,6 +21,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-leaflet'
   gem 'rails-assets-backbone'
   gem 'rails-assets-toastr'
+  gem 'rails-assets-bootstrap-modal'
+  gem 'rails-assets-Leaflet.awesome-markers'
 end
 gem 'slim-rails'
 gem 'font-awesome-rails'
