@@ -21,7 +21,7 @@ data['dealers'].each do |dealer_data|
   end
   attrs = dealer_data.slice( "address", "www", "zip", "country",  "name", "phone", "city", "note")
   attrs['lat'], attrs['lon'] = dealer_data['coordinates']
-  dealer = Dealer.where(old_id: dealer_data['id']).first_or_initialize(attrs, validate: false)
+  dealer = Dealer.where(old_id: dealer_data['id']).first_or_initialize(attrs)
   dealer.save(validate:false)
   (dealer_data['statuses'] || []).each do |status|
     old_drink_id = status['drink_id']

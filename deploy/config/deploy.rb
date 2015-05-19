@@ -19,7 +19,7 @@ before 'deploy:assets:precompile', 'deploy:migrate'
 desc 'ping server for passenger restart'
 task :ping_restart do
   run_locally do
-    execute "curl -XGET -I --silent http://#{fetch(:host, 'www.' + fetch(:application) + '.de')}"
+    execute "curl -XGET -I --silent http://www.mate-karte.de"
   end
 end
 
