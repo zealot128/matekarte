@@ -32,6 +32,7 @@ def import
     if (i+=1) % 1000 == 0
       puts " DS #{i} / #{c}"
     end
+    next if stadt['name'].blank?
     state = federal_state(stadt)
     if state
       fstate = FederalState.where(country: 'Deutschland', name: state['name']).first_or_create!(short: state['kz'])
