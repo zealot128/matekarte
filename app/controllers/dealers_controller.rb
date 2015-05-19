@@ -11,5 +11,21 @@ class DealersController < ApplicationController
   end
 
   def new
+    @dealer = Dealer.new
+  end
+
+  def create
+    @dealer = Dealer.new(dealer_params)
+    if @dealer.save
+      redirect_to @dealer, notice: 'Danke für die Eingabe. Bitte gib nun das Getränkeangebot an'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def dealer_params
+    params.require(:dealer).permit(:name, :www, :country, :address, :zip, :phone, :city, :note)
   end
 end

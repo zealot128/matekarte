@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   end
   resources :drinks
   get 'impressum' => 'home#impressum'
+
+  get 'mate/in' => 'lists#country'
+  get 'mate/in/:federal_state' => 'lists#federal_state'
+  get 'mate/in/:federal_state/:city' => 'lists#city'
+
   root to: 'home#index'
 end

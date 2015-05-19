@@ -6,18 +6,13 @@ end
 
 gem 'rails', '~> 4.2.1'
 gem 'bcrypt', '~> 3.1.7'
-gem 'jquery-rails'
 gem 'pg'
-gem 'sass-rails', '~> 5.0'
-gem 'sprockets-es6'
-gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-
 gem 'simple_form'
-
-gem 'bootstrap-sass'
-gem 'geocoder'
 gem 'oj'
+gem 'geocoder'
+gem 'slim-rails'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-leaflet'
   gem 'rails-assets-backbone'
@@ -25,12 +20,18 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-modal'
   gem 'rails-assets-Leaflet.awesome-markers'
 end
-gem 'slim-rails'
+
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'jquery-rails'
+gem 'sass-rails', '~> 5.0'
+gem 'sprockets-es6'
+gem 'turbolinks'
 gem 'font-awesome-rails'
+gem 'quiet_assets', group: :development
 
 gem 'google_places'
 
-gem 'quiet_assets', group: :development
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'

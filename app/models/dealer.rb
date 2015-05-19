@@ -1,8 +1,15 @@
 class Dealer < ActiveRecord::Base
   has_many :drink_offers
   has_many :drinks, through: :drink_offers
+  belongs_to :federal_state
+  belongs_to :postcode
 
   geocoded_by :full_address, latitude: :lat, longitude: :lon
+  validates :address, presence: true
+  validates :zip, presence: true
+  validates :city, presence: true
+  validates :name, presence: true
+  validates :www, format: { with: %r{\Ahttps?:\/\/|\A\z} }
 
   before_create do
     if lat.blank?
@@ -25,6 +32,7 @@ class Dealer < ActiveRecord::Base
       update_column :google_places_response, {}
     end
   rescue GooglePlaces::OverQueryLimitError
+    $stderr.puts 'Over query limit'
   end
 
   def full_address

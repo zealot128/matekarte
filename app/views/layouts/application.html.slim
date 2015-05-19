@@ -12,6 +12,8 @@ html
         a.navbar-brand href='/'
           | Matekarte
           sup< 2
+        ul.navbar-nav.nav
+          li: a href='/dealers/new' Händler eintragen
         - if content_for?(:content_header)
           = yield(:content_header)
 
@@ -22,7 +24,6 @@ html
       .container-fluid
         ul.list-inline.text-center
           li: a href='/impressum' Impressum
-          li: a href='/dealers/new' Händler eintragen
           li: a href='https://github.com/zealot128'
             i.fa.fa-fw.fa-github>
             |Source-Code

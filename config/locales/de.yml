@@ -7,3 +7,16 @@ de:
       empty: Nicht mehr vorhanden
 
 
+  simple_form:
+    labels:
+      dealer:
+        www: 'Website'
+        address: 'Straße/Hausnummer'
+        zip: Postleitzahl
+        city: Stadt
+        phone: Telefon
+        note: Hinweise
+    hints:
+      dealer:
+        note: z.B. Hinweis auf beschränktes Angebot, nur Angebot für Gewerbescheininhaber
+

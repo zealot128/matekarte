@@ -1,0 +1,19 @@
+h2 Neuer Händler
+
+div style='max-width: 600px'
+  = simple_form_for @dealer do |f|
+    = f.input :name
+
+    = field_set_tag 'Adresse' do
+      = f.input :address
+      .row
+        .col-sm-6
+          = f.input :zip
+        .col-sm-6
+          = f.input :city
+    = field_set_tag 'Kontakt' do
+      = f.input :www
+      = f.input :phone
+      = f.input :note
+
+    = f.submit "Speichern", class: 'btn btn-primary'

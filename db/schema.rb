@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516220244) do
+ActiveRecord::Schema.define(version: 20150519121433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,12 @@ ActiveRecord::Schema.define(version: 20150516220244) do
     t.datetime "updated_at",             null: false
     t.json     "cached_drinks"
     t.json     "google_places_response"
+    t.integer  "federal_state_id"
+    t.integer  "postcode_id"
   end
+
+  add_index "dealers", ["federal_state_id"], name: "index_dealers_on_federal_state_id", using: :btree
+  add_index "dealers", ["postcode_id"], name: "index_dealers_on_postcode_id", using: :btree
 
   create_table "drink_offers", force: :cascade do |t|
     t.integer  "dealer_id"
@@ -55,6 +60,26 @@ ActiveRecord::Schema.define(version: 20150516220244) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "federal_states", force: :cascade do |t|
+    t.string "country"
+    t.string "name"
+    t.string "short"
+  end
+
+  add_index "federal_states", ["country", "name"], name: "index_federal_states_on_country_and_name", using: :btree
+
+  create_table "postcodes", force: :cascade do |t|
+    t.integer "federal_state_id"
+    t.string  "postcode"
+    t.string  "name"
+  end
+
+  add_index "postcodes", ["federal_state_id", "postcode", "name"], name: "index_postcodes_on_federal_state_id_and_postcode_and_name", using: :btree
+  add_index "postcodes", ["postcode", "name"], name: "index_postcodes_on_postcode_and_name", using: :btree
+  add_index "postcodes", ["postcode"], name: "index_postcodes_on_postcode", using: :btree
+
+  add_foreign_key "dealers", "federal_states"
+  add_foreign_key "dealers", "postcodes"
   add_foreign_key "drink_offers", "dealers"
   add_foreign_key "drink_offers", "drinks"
 end
