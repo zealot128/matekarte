@@ -45,8 +45,9 @@ end
 def assign_dealer
   puts "Dealer zuweisen..."
   Dealer.where('federal_state_id is null').find_each do |dealer|
-    base = Postcode.where('postcode like ?', "%#{dealer.zip}%")
-    postcode = base.where(name: dealer.city).first
+    base = Postcode.where('postcode like ?', "%#{dealer.zip.strip}%")
+    postcode = base.where(name: dealer.city.strip).first
+    postcode ||= base.first
     if postcode
       dealer.federal_state = postcode.federal_state
       dealer.postcode = postcode
