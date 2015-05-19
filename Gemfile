@@ -30,7 +30,7 @@ gem 'turbolinks'
 gem 'font-awesome-rails'
 gem 'quiet_assets', group: :development
 
-gem 'google_places'
+gem 'stringex'
 
 group :development, :test do
   gem 'pry-rails'
