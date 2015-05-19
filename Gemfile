@@ -26,7 +26,6 @@ gem 'bootswatch-rails'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'sprockets-es6'
-gem 'turbolinks'
 gem 'font-awesome-rails'
 gem 'quiet_assets', group: :development
 
@@ -35,5 +34,17 @@ gem 'stringex'
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'pludoni-spec', git: 'https://github.com/pludoni/pludoni-spec.git'
 end
 
+group :production do
+  gem 'redis-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end

@@ -61,8 +61,9 @@ class Map {
     var url = "http://{s}.tile.osm.org/{z}/{x}/{y}.png";
     L.tileLayer(url, {
       attribution: `&copy;
-      <a href="http://osm.org/copyright">OpenStreetMap</a> contributors /
-      <a href="https://lyrk.de">Lyrk</a>`
+      <a href="http://osm.org/copyright">OpenStreetMap</a> contributors
+      <!--/ <a href="https://lyrk.de">Lyrk</a>-->
+      `
     }).addTo(this.map);
   }
   updateInfo() {
