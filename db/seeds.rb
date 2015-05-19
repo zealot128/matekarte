@@ -26,7 +26,7 @@ data['dealers'].each do |dealer_data|
   (dealer_data['statuses'] || []).each do |status|
     old_drink_id = status['drink_id']
     drink_id = drink_hash[old_drink_id] || (raise "FOOBAR: #{old_drink_id}")
-    dealer.drink_offers.create!(drink_id: drink_id, status: status['status'], created_at: status['created_at'])
+    dealer.drink_offers.create!(drink_id: drink_id, status: status['status'] || 0, created_at: status['created_at'])
   end
   (dealer_data['drink_id'] || []).each do |did|
     drink_id = drink_hash[did]
