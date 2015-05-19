@@ -1,0 +1,10 @@
+h1 Matehändler in #{@federal_state.name}
+
+p In #{@federal_state.name} sind zurzeit #{@federal_state.dealer_count} Händler eingetragen.
+
+ul
+  - @federal_state.best_locations(top: 1000).each do |postcode|
+    li
+      = link_to location_url(federal_state: @federal_state, postcode: postcode) do
+        = postcode.name
+        small< = postcode.count

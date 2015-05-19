@@ -17,6 +17,7 @@ class DrinkOffer < ActiveRecord::Base
     when 'empty','unknown', nil then 'danger'
     when 'available' then 'success'
     when 'almost_empty' 'warning'
+    else 'danger'
     end
   end
 

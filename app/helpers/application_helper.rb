@@ -21,4 +21,14 @@ module ApplicationHelper
     link_to "tel:#{groups.join '-'}", *args, &block
   end
 
+  def location_url(federal_state: nil, postcode: nil)
+    args = {controller: 'lists', action: 'postcode', postcode: postcode, federal_state: federal_state}
+    if federal_state and postcode
+      url_for(args)
+    elsif postcode.nil? and federal_state
+      url_for(args.merge(action: 'federal_state'))
+    else
+      url_for(controller: 'lists', action: 'country')
+    end
+  end
 end

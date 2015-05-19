@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'mate/in' => 'lists#country'
   get 'mate/in/:federal_state' => 'lists#federal_state'
-  get 'mate/in/:federal_state/:city' => 'lists#city'
+  get 'mate/in/:federal_state/:postcode' => 'lists#postcode'
 
   root to: 'home#index'
 end

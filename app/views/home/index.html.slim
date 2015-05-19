@@ -5,3 +5,11 @@
   ul class="nav navbar-nav navbar-right"
     li: a.js-get-geopos href='#' title='Geoposition ermitteln'
       i.fa.fa-map-marker.fa-fw
+
+javascript:
+  window.Drinks = {};
+  $.get('/drinks.json', function(data){
+    data.forEach( function(el) {
+      window.Drinks[el.id] = el;
+    });
+  });

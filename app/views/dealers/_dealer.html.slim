@@ -1,0 +1,14 @@
+.dealer.panel.panel-default
+  .panel-heading
+    = link_to dealer, class: 'js-modal' do
+      strong = dealer.name
+  .panel-body
+    p
+      - dealer.drink_offers.newest_groups.each do |df|
+        span.label class="label-#{df.bootstrap_class}"
+          = df.drink.name
+
+
+    = dealer.note
+
+

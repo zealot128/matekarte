@@ -1,0 +1,15 @@
+h1 Matehändler in #{@postcode.name} (#{@federal_state.name})
+
+
+p Postleitzahl(bereich): #{@postcode.postcode.split(',').to_sentence}
+
+.row
+  - @postcode.dealers.order(:name).each_with_index do |dealer,i|
+    - if i % 2 == 0
+      .clearfix.visible-sm
+    - if i % 3 == 0
+      .clearfix.visible-md
+    - if i % 4 == 0
+      .clearfix.visible-lg
+    .col-lg-3.col-md-4.col-sm-6
+      = render dealer

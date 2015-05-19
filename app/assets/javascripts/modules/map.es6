@@ -1,11 +1,5 @@
 L.Icon.Default.imagePath = '/assets/leaflet';
 window.Dealers = {};
-window.Drinks = {};
-$.get('/drinks.json', (data) => {
-  data.forEach( (el) => {
-    window.Drinks[el.id] = el;
-  });
-});
 
 class Dealer {
   constructor(map, hash) {

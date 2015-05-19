@@ -4,8 +4,11 @@ class ListsController < ApplicationController
   end
 
   def federal_state
+    @federal_state = FederalState.find_by_url!(params[:federal_state])
   end
 
-  def city
+  def postcode
+    @federal_state = FederalState.find_by_url!(params[:federal_state])
+    @postcode = @federal_state.postcodes.find_by_url!(params[:postcode])
   end
 end

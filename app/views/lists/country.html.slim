@@ -2,18 +2,20 @@ h1 Mate in Deutschland
 
 .row
   - @federal_states.each do |fstate|
-    .col-lg-4.col-md-6
+    .col-lg-3.col-md-4.col-sm-6
       .panel.panel-default
         .panel-heading
           h3.panel-title
-            = fstate.name
+            = link_to location_url(federal_state: fstate) do
+              = fstate.name
             small<
               | #{fstate.count}x
         .panel-body
           ul
             - fstate.best_locations.each do |postcode|
               li
-                = postcode.name
-                small<
-                  = postcode.count
+                = link_to location_url(federal_state: fstate, postcode: postcode) do
+                  = postcode.name
+                  small<
+                    = postcode.count
 
