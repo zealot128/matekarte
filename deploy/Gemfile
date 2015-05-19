@@ -1,0 +1,13 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+gem 'capistrano', '~> 3.0'
+gem 'capistrano-rvm', github: 'capistrano/rvm'#, ref: 'dc35ec5e7a74a422250bd6ff5e8885c8b742d0e5'
+gem 'rvm1-capistrano3', require: false
+gem 'capistrano-bundler', '~>1.1'
+gem 'capistrano-rails', '~>1.1'
+gem 'capistrano-rails-console'
+gem 'capistrano-passenger'
+gem 'capistrano-sidekiq'
+gem "airbrussh", :require => false
+

@@ -35,7 +35,7 @@ def import
     state = federal_state(stadt)
     if state
       fstate = FederalState.where(country: 'Deutschland', name: state['name']).first_or_create!(short: state['kz'])
-      Postcode.where(federal_state_id: fstate.id, postcode: stadt['plz'], name: stadt['name']).first_or_create!
+      Postcode.where(federal_state_id: fstate.id, postcode: stadt['plz'], name: stadt['name']).first_or_create!(latitude: state['lat'], longitude: state['lon'])
     end
   end
   puts "#{FederalState.count} Bundeslaender importiert"

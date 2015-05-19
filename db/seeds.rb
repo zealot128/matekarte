@@ -34,3 +34,9 @@ data['dealers'].each do |dealer_data|
     end
   end
 end
+
+load 'db/seeds/geodb.rb'
+
+read_data
+import
+assign_dealer

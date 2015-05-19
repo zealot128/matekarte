@@ -7,7 +7,7 @@ describe 'Browsing', js: true do
     page.should have_content 'Impressum'
   end
 
-  specify 'Listen' do
+  specify 'List' do
     sn = FederalState.create!(name: 'Sachsen')
     dd = Postcode.create!(name: 'Dresden', federal_state: sn, postcode: '01309')
     mate = Drink.create!(name: 'Club Mate')
@@ -29,5 +29,42 @@ describe 'Browsing', js: true do
     click_on 'Dresden'
     page.should have_content 'Kaufland'
     click_on 'Kaufland'
+  end
+
+  specify 'Dealer anlegen' do
+    sn = FederalState.create!(name: 'Sachsen')
+    dd = Postcode.create!(name: 'Dresden', federal_state: sn, postcode: '01309')
+    mate = Drink.create!(name: 'Club Mate')
+
+    visit '/impressum'
+    click_on 'Händler eintragen'
+    fill_in 'Name', with: 'Kaufland'
+    fill_in 'Straße', with: 'Borsbergstraße 35'
+    fill_in 'Postleitzahl', with: '01309'
+    fill_in 'Stadt', with: 'Dresden'
+    fill_in 'Hinweise', with: 'foobar'
+
+    click_on 'Speichern'
+    click_on 'Angebot nicht aktuell?'
+    select 'Club Mate'
+    choose 'Verfügbar'
+    click_on 'Speichern'
+
+    page.should have_content 'Information aktualisiert'
+    page.should have_content 'Club Mate'
+
+    Dealer.first.tap do |d|
+      d.should be_present
+      d.name.should == 'Kaufland'
+      d.latitude.should be_present
+
+      d.drink_offers.count.should == 2
+      d.drink_offers.first.tap do |offer|
+        offer.drink.should == mate
+      end
+      d.postcode.should == dd
+      d.federal_state.should == sn
+      d.cached_drinks.should be_present
+    end
   end
 end

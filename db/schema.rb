@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519131230) do
+ActiveRecord::Schema.define(version: 20150519182913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20150519131230) do
     t.string  "postcode"
     t.string  "name"
     t.string  "url"
+    t.float   "latitude"
+    t.float   "longitude"
   end
 
   add_index "postcodes", ["federal_state_id", "postcode", "name"], name: "index_postcodes_on_federal_state_id_and_postcode_and_name", using: :btree
