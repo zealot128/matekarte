@@ -1,6 +1,6 @@
 set :scm, :git
 
-set :linked_files, %w{config/database.yml config/secrets.yml config/smtp.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml config/email.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads}
 
 set :rvm_ruby_version, '2.1.1'

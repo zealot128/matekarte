@@ -19,3 +19,4 @@ config/secrets.yml
 *.swo
 *.swp
 /public/*jpg
+deploy/log
