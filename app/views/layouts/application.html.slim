@@ -19,6 +19,12 @@ html
           = yield(:content_header)
 
     .container-fluid
+      - if flash[:notice]
+        .alert.alert-success = flash[:notice]
+      - if flash[:alert]
+        .alert.alert-danger = flash[:alert]
+      - if @breadcrumbs
+        = render "layouts/breadcrumbs"
       = yield
 
     footer

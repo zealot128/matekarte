@@ -7,6 +7,7 @@ class DealersController < ApplicationController
   def show
     @dealer = Dealer.find(params[:id])
     @drink_offers = @dealer.drink_offers.newest_groups
+    set_breadcrumbs!
     render layout: !request.xhr?
   end
 
@@ -27,5 +28,17 @@ class DealersController < ApplicationController
 
   def dealer_params
     params.require(:dealer).permit(:name, :www, :country, :address, :zip, :phone, :city, :note)
+  end
+
+  def set_breadcrumbs!
+    @breadcrumbs = [
+      [ '/', 'Mate'],
+      [ '/mate/in', 'Deutschland'],
+    ]
+    if @dealer.postcode
+      @breadcrumbs << [ view_context.location_url(federal_state: @dealer.federal_state), @dealer.federal_state.name ]
+      @breadcrumbs << [ view_context.location_url(federal_state: @dealer.federal_state, postcode: @dealer.postcode), @dealer.postcode.name ]
+    end
+    @breadcrumbs << [ '', @dealer.name ]
   end
 end

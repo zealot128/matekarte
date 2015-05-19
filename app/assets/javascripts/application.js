@@ -6,7 +6,5 @@
 //= require leaflet/leaflet
 //= require Leaflet.awesome-markers
 //= require bootstrap/modal
-//= require bootstrap-modal/bootstrap-modalmanager.js
-//= require bootstrap-modal
 //= require_tree ./modules
 //= require homepage

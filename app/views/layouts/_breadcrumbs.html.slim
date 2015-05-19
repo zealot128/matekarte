@@ -1,0 +1,7 @@
+.ol.breadcrumb
+  - @breadcrumbs.each_with_index do |(url, text),i|
+    - if @breadcrumbs.length - 1 == i
+      li.active = text
+    - else
+      li
+        a href='#{url}' = text

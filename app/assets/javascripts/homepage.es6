@@ -40,7 +40,7 @@ jQuery(document).ready( () => {
 
   var pos = LS.get('position');
   if (pos) {
-    App.navigate(`map/${pos[0]}/${pos[1]}`);
+    App.navigate(`map/${pos[0]}/${pos[1]}`, { trigger: true });
   } else {
     App.navigate("map/52.5170365/13.3888599");
     getGeoPos();
@@ -48,9 +48,3 @@ jQuery(document).ready( () => {
 });
 
 
-$.fn.modal.defaults.spinner = $.fn.modalmanager.defaults.spinner =
-  '<div class="loading-spinner" style="width: 200px; margin-left: -100px;">' +
-  '<div class="progress progress-striped active">' +
-  '<div class="progress-bar" style="width: 100%;"></div>' +
-  '</div>' +
-  '</div>';
