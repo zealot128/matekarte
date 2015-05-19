@@ -15,7 +15,14 @@ describe 'Browsing', js: true do
     dealer = Dealer.create!(postcode: dd, federal_state: sn, zip: '01309', city: 'Dresden', name: 'Kaufland', www: '', address: 'Borsbergstraße 35', note: '', lat: 51.0768338,lon: 13.7725857)
     dealer.drink_offers.create!(status: :available, drink: mate)
 
+    Dealer.find(dealer.id).tap do |d|
+      d.drink_offers.count.should == 1
+      d.federal_state.should == sn
+      d.postcode.should == dd
+      d.drink_offers.first.drink.should == mate
+    end
     sleep 1
+
     visit '/'
     click_on 'Listen'
     click_on 'Sachsen'

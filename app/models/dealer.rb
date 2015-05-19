@@ -13,8 +13,13 @@ class Dealer < ActiveRecord::Base
 
   before_create do
     if lat.blank?
+      p geocode
       geocode
     end
+  end
+
+  after_create do
+    update_cached_json!
   end
 
   def update_cached_json!
